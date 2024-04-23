@@ -3,7 +3,8 @@
 import { CounterButton, Link } from "@repo/ui";
 import useSocket from "../lib/hooks/useSocket";
 import { useEffect, useState } from "react";
-
+import prisma from "db";
+import { createMessage } from "../actions";
 // export const metadata = {
 //     title: "Store | Kitchen Sink",
 // };
@@ -20,9 +21,10 @@ export default function Store(): JSX.Element {
         });
     });
 
-    function handleClick(e: React.SyntheticEvent) {
+    async function handleClick(e: React.SyntheticEvent) {
         e.preventDefault();
         socket.emit("msg", message);
+        createMessage();
     }
 
     return (
