@@ -1,7 +1,9 @@
-import React from "react";
+"use client";
+import React, { useMemo } from "react";
 import { io } from "socket.io-client";
 
 export default function useSocket() {
-    const socket = io("http://localhost:7000");
+    const userId = 0;
+    const socket = useMemo(() => io("http://localhost:7000"), [userId]);
     return socket;
 }
