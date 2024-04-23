@@ -1,13 +1,16 @@
+import { createServer } from "http";
 import { Server } from "socket.io";
 
-const io = new Server({
-    /* options */
+const httpServer = createServer();
+const io = new Server(httpServer, {
+    cors: {
+        origin: "*",
+        methods: ["GET", "POST"],
+    },
 });
 
 io.on("connection", (socket) => {
-    console.log(socket.id);
+    console.log("Connected " + socket.id);
 });
 
-console.log("Heelo");
-
-io.listen(7000);
+httpServer.listen(7000, () => console.log("WS is listening on 7000"));

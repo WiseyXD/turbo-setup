@@ -1,30 +1,16 @@
-import { log } from "@repo/logger";
-import { CounterButton, Link } from "@repo/ui";
+"use client";
 
-export const metadata = {
-  title: "Store | Kitchen Sink",
-};
+import { CounterButton, Link } from "@repo/ui";
+import useSocket from "../lib/hooks/useSocket";
+
+// export const metadata = {
+//     title: "Store | Kitchen Sink",
+// };
 
 export default function Store(): JSX.Element {
-  log("Hey! This is the Store page.");
-
-  return (
-    <div className="container">
-      <h1 className="title">
-        Store <br />
-        <span>Kitchen Sink</span>
-      </h1>
-      <CounterButton />
-      <p className="description">
-        Built With{" "}
-        <Link href="https://turbo.build/repo" newTab>
-          Turborepo
-        </Link>
-        {" & "}
-        <Link href="https://nextjs.org/" newTab>
-          Next.js
-        </Link>
-      </p>
-    </div>
-  );
+    const socket = useSocket();
+    socket.on("connect", () => {
+        console.log(socket.id); // x8WIv7-mJelg7on_ALbx
+    });
+    return <div className="container">Heelo</div>;
 }
