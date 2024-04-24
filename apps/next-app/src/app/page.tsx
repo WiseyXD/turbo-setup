@@ -21,6 +21,8 @@ export default function Store(): JSX.Element {
         });
     });
 
+    // Null day
+
     async function handleClick(e: React.SyntheticEvent) {
         e.preventDefault();
         socket.emit("msg", message);
