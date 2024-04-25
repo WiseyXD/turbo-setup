@@ -21,7 +21,7 @@ export default function Store(): JSX.Element {
         });
     });
 
-    // Null day
+    // Might get to work late at night
 
     async function handleClick(e: React.SyntheticEvent) {
         e.preventDefault();
